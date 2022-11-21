@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Data Mahasiswa</title>
+  <title>Data Mahasiswa_Test</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
