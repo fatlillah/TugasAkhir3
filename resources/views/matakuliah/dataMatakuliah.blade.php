@@ -37,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -152,12 +152,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
+      </ul>
+      <ul class= "navbar-nav">
+          @auth
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person"></i> {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/matakuliah"><i class="bi bi-grid-3x3-gap-fill"></i> My Absensi</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="{{ route('logout') }}">
+                @csrf
+                <button type="submit"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</li></button>
+              </form>
+            </li>
+          </ul>
+        </li>
+          @else
+            <li class="nav-item">
+              <a href="{{ url('/auth/login')}}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+          @endauth
+      </ul>
+      
+       
+    
   </nav>
   <!-- /.navbar -->
 
@@ -199,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="/dashboard" class="nav-link">
                    <i class="nav-icon fas fa-th"></i>
                    <p>
                      Dashboard
@@ -268,6 +289,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/insertMatakuliah">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
         </a>
+        <a href="#">
+          <button type="button" class="btn btn-primary mb-3 float-end">Export</button>
+        </a>
 
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -284,6 +308,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th scope="col">Nama Matakuliah</th>
               <th scope="col">Nama Dosen</th>
               <th scope="col">SKS</th>
+              <th scope="col">Tanggal Buat</th>
               <th scope="col">Aksi</th>
             </tr>
           </thead>
@@ -308,7 +333,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tbody>
         </table>
         
-        <a href="/"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
+        <a href="/dashboard"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
       </div><!-- /.container-fluid -->
     </div>
 

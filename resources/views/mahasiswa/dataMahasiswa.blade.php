@@ -221,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="/dashboard" class="nav-link">
                    <i class="nav-icon fas fa-th"></i>
                    <p>
                      Dashboard
@@ -290,6 +290,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/insertMahasiswa">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
         </a>
+        <a href="#">
+          <button type="button" class="btn btn-primary mb-3 float-end">Export</button>
+        </a>
 
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -329,7 +332,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tbody>
         </table>
 
-        <a href="/">Back</a>
+        <a href="/dashboard"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
       </div><!-- /.container-fluid -->
     </div>
 
