@@ -18,6 +18,14 @@ use App\Http\Controllers\Auth\PresenceController;
 |
 */
 
+// tes route
+Route::get('/tess', function(){
+    return view('tesLogin');
+});
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
