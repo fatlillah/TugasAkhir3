@@ -17,6 +17,14 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
+// tes route
+Route::get('/tess', function(){
+    return view('tesLogin');
+});
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
