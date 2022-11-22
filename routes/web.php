@@ -24,11 +24,13 @@ Route::get('/tess', function(){
 });
 
 
+// Route::get('/export', function(){
+//     return view('export.index');
+// });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 // for mahasiswa
@@ -41,6 +43,7 @@ Route::get('/tampilDataMahasiswa/{id}', [MahasiswaController::class, 'tampilData
 Route::post('/updateDataMahasiswa/{id}', [MahasiswaController::class, 'updateDataMahasiswa'])->name('updatedata');
 
 Route::get('/deleteMahasiswa/{id}', [MahasiswaController::class, 'daleteMahasiswa'])->name('dalete');
+Route::get('/export', [MahasiswaController::class, 'export'])->name('export');
 
 
 

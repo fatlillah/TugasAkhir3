@@ -290,7 +290,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/insertMahasiswa">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
         </a>
-        <a href="#">
+        <a href="/export">
           <button type="button" class="btn btn-primary mb-3 float-end">Export</button>
         </a>
 
