@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -68,13 +68,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-person"></i> {{ auth()->user()->name }}
           </a>
+
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      </ul>
+      <ul class= "navbar-nav">
+          @auth
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person"></i> {{ auth()->user()->name }}
+          </a>
+
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/matakuliah"><i class="bi bi-grid-3x3-gap-fill"></i> My Absensi</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <form action="{{ route('logout') }}" method="POST">
+
+              <a href="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</a></li></button>
+                <button type="submit"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</li></button>
               </form>
             </li>
           </ul>
@@ -85,6 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
           @endauth
       </ul>
+
   </nav>
   <!-- /.navbar -->
 
@@ -103,7 +128,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('admin-lte/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Kelompok 1</a>
+
+          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+
         </div>
       </div>
 
@@ -125,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="/dashboard" class="nav-link">
                    <i class="nav-icon fas fa-th"></i>
                    <p>
                      Dashboard
@@ -188,6 +215,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/insertMatakuliah">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
         </a>
+        <a href="#">
+          <button type="button" class="btn btn-primary mb-3 float-end">Export</button>
+        </a>
 
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -205,6 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th scope="col">Nama Dosen</th>
               <th scope="col">SKS</th>
               <th scope="col">Dibuat</th>
+
               <th scope="col">Aksi</th>
             </tr>
           </thead>
@@ -229,7 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tbody>
         </table>
         
-        <a href="/"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
+        <a href="/dashboard"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
       </div><!-- /.container-fluid -->
     </div>
 

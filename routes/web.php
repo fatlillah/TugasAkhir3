@@ -18,31 +18,42 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// tes route
+Route::get('/tess', function(){
+    return view('tesLogin');
 });
 
 
-// for mahasiswa
-Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+// Route::get('/export', function(){
+//     return view('export.index');
+// });
 
-Route::get('/insertMahasiswa', [MahasiswaController::class, 'insertMahasiswa'])->name('insert data');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+// for mahasiswa
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa')->middleware('auth');
+
+Route::get('/insertMahasiswa', [MahasiswaController::class, 'insertMahasiswa'])->name('insert data')->middleware('auth');
 Route::post('/addMahasiswa', [MahasiswaController::class, 'addMahasiswa'])->name('add');
 
-Route::get('/tampilDataMahasiswa/{id}', [MahasiswaController::class, 'tampilDataMahasiswa'])->name('tampildata');
+Route::get('/tampilDataMahasiswa/{id}', [MahasiswaController::class, 'tampilDataMahasiswa'])->name('tampildata')->middleware('auth');
 Route::post('/updateDataMahasiswa/{id}', [MahasiswaController::class, 'updateDataMahasiswa'])->name('updatedata');
 
 Route::get('/deleteMahasiswa/{id}', [MahasiswaController::class, 'daleteMahasiswa'])->name('dalete');
+Route::get('/export', [MahasiswaController::class, 'export'])->name('export');
 
 
 
 
 // for matakuliah
-Route::get('/matakuliah', [MatakuliahController::class, 'index'])->name('matakuliah');
-Route::get('/insertMatakuliah', [MatakuliahController::class, 'insertMatakuliah'])->name('insertMatakuliah');
+Route::get('/matakuliah', [MatakuliahController::class, 'index'])->name('matakuliah')->middleware('auth');
+Route::get('/insertMatakuliah', [MatakuliahController::class, 'insertMatakuliah'])->name('insertMatakuliah')->middleware('auth');
 Route::post('/addMatakuliah', [MatakuliahController::class, 'addMatakuliah'])->name('addMatakuliah');
 
-Route::get('/tampilDataMatakuliah/{id}', [MatakuliahController::class, 'tampilDataMatakuliah'])->name('tampildata');
+Route::get('/tampilDataMatakuliah/{id}', [MatakuliahController::class, 'tampilDataMatakuliah'])->name('tampildata')->middleware('auth');
 Route::post('updateMatkul/{id}', [MatakuliahController::class, 'updateMatkul'])->name('updateMatkul');
 
 Route::get('/deleteMatakuliah/{id}', [MatakuliahController::class, 'delete'])->name('delete');
@@ -64,7 +75,7 @@ Route::redirect('/', '/auth/login');
 Route::prefix('/auth')->group(function(){
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('logout', [ 'as' => 'logout', 'uses' => 'LoginController@logout']);
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'processRegister']);
 });

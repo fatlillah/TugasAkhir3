@@ -8,14 +8,6 @@
 <div class="form-login" style="text-align: center;">
 <h4>Register</h4>
 </div>
-<!-- @if (session("success"))
-<div class="alert alert-primary">{{ session('success') }}</div>
-@endif
-@if ($errors->any())
-<div class="alert alert-danger" role="alert">
-{!! implode('', $errors->all('<li>:message</li>')) !!}
-</div>
-@endif -->
 <form method="post" action="{{ route('register') }}">
 @csrf
 <div class="form-group">
@@ -28,7 +20,7 @@
     @enderror
 </div>
 <div class="form-group">
-<label>Email address</label>
+<label>Email</label>
 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" value="{{ old('email')}}" required>
 @error('email')
 <div class="invalid-feedback">
