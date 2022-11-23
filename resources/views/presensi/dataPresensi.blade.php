@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Data Matakuliah</title>
+  <title>Data Presensi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -178,14 +178,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Perkuliahan</h1>
+            <h1 class="m-0">Data Presensi</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <div class="content">
       <div class="container mt-5">
-        <a href="/insertMatakuliah">
+        <a href="/insertPresensi">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
         </a>
 
@@ -200,10 +200,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col" id="tes">Kode Matakuliah</th>
-              <th scope="col">Nama Matakuliah</th>
-              <th scope="col">Nama Dosen</th>
-              <th scope="col">SKS</th>
+              <th scope="col" id="tes">NRP</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Absen</th>
+              <th scope="col">Keterangan</th>
               <th scope="col">Dibuat</th>
               <th scope="col">Aksi</th>
             </tr>
@@ -215,14 +215,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @foreach ($data as $row)
             <tr>
               <th scope="row">{{$no++}}</th>
-              <td>{{$row->id_matkul}}</td>
-              <td>{{$row->Nama_matkul}}</td>
-              <td>{{$row->Nama_Dosen}}</td>
-              <td>{{$row->SKS}}</td>
+              <td>{{$row->NRP}}</td>
+              <td>{{$row->Nama}}</td>
+              <td>{{$row->Absen}}</td>
+              <td>{{$row->Keterangan}}</td>
               <td>{{$row->created_at->diffForHumans()}}</td>
               <td>
-                <a href="/tampilDataMatakuliah/{{$row->id}}" class="btn btn-info">Update</a>
-                <a href="/deleteMatakuliah/{{$row->id}}" class="btn btn-danger">Delete</a> 
+                <a href="/tampilDataPresensi/{{$row->id}}" class="btn btn-info">Update</a>
+                <a href="/deletePresensi/{{$row->id}}" class="btn btn-danger">Delete</a> 
               </td>
             </tr>
             @endforeach

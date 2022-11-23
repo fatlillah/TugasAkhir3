@@ -7,8 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Data Mahasiswa</title>
+  <title>Data Presensi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -152,7 +151,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
@@ -247,7 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Insert Data Mahasiswa</h1>
+            <h1 class="m-0">Insert Data Presensi</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -260,27 +258,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <div class="content">
       <div class="container">
-        <form action="/addMahasiswa" method="POST" enctype="multipart/form-data">
+        <form action="/addPresensi" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
+            <label for="nama" class="form-label">NRP</label>
+            <input type="text" class="form-control" id="NRP" placeholder="Masukkan NRP" name="NRP">
+          </div>
+          <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="namaid" placeholder="masukkan nama" name="nama">
+            <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" name="Nama">
           </div>
           <div class="mb-3">
-            <label for="kelamin" class="form-label">Jenis Kelamin</label>
-            <select class="form-select" aria-label=".form-select-sm example" name="jenisKelamin">
-              <option selected>Masukkan Kelamin</option>
-              <option value="laki">Laki-laki</option>
-              <option value="perempuan">Perempuan</option>
-            </select>
+            <label for="nama" class="form-label">Absen</label>
+            <input type="date" class="form-control" id="absen" placeholder="Masukkan absensi" name="Absen">
           </div>
           <div class="mb-3">
-            <label for="hp" class="form-label">No Handphone</label>
-            <input type="number" class="form-control" id="hp" placeholder="masukkan no handphone" name="noTelepon">
+            <label for="keterangan" class="form-label">Keterangan</label>
+            <select class="form-select" aria-label=".form-select-sm example" name="Keterangan">
+              <option selected>Keterangan</option>
+              <option value="H">Hadir</option>
+              <option value="I">Izin</option>
+              <option value="S">Sakit</option>
+            </select>  
           </div>
           <button type="submit" class="btn btn-success mb-3">Add</button>
-          <a href="/mahasiswa">
-            <button type="button" class="btn btn-danger mb-3 float-end">Back</button>
+          <a href="/">
+            <img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/>
+            {{-- <button type="button" class="btn btn-danger mb-3 float-end">Back</button> --}}
           </a>
         </form>
       </div>
@@ -307,7 +311,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2022 <a href="#">Bagus Untoro</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="#">Kelmpok 1</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
