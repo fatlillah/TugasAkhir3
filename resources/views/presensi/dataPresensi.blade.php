@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -8,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Data Mahasiswa</title>
+  <title>Data Presensi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -37,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-    
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -61,100 +62,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </form>
         </div>
       </li>
-
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      </ul>
-
       <ul class= "navbar-nav">
           @auth
           <li class="nav-item dropdown">
@@ -165,9 +72,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li><a class="dropdown-item" href="/matakuliah"><i class="bi bi-grid-3x3-gap-fill"></i> My Absensi</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <a href="{{ route('logout') }}">
+              <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</li></button>
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</a></li></button>
               </form>
             </li>
           </ul>
@@ -196,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('admin-lte/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">Kelompok 1</a>
         </div>
       </div>
 
@@ -218,7 +125,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                 <a href="/dashboard" class="nav-link">
+                 <a href="#" class="nav-link">
                    <i class="nav-icon fas fa-th"></i>
                    <p>
                      Dashboard
@@ -271,18 +178,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Mahasiswa</h1>
+            <h1 class="m-0">Data Presensi</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <div class="content">
       <div class="container mt-5">
-        <a href="/insertMahasiswa">
+        <a href="/insertPresensi">
           <button type="button" class="btn btn-success mb-3">Insert Data</button>
-        </a>
-        <a href="/export">
-          <button type="button" class="btn btn-primary mb-3 float-end">Export</button>
         </a>
 
         @if ($message = Session::get('success'))
@@ -295,10 +199,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col" id="tes">Nama</th>
-              <th scope="col">Jenis Kelamin</th>
-              <th scope="col">No. HP</th>
+              <th scope="col">No.</th>
+              <th scope="col" id="tes">NRP</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Absen</th>
+              <th scope="col">Keterangan</th>
               <th scope="col">Dibuat</th>
               <th scope="col">Aksi</th>
             </tr>
@@ -310,22 +215,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @foreach ($data as $row)
             <tr>
               <th scope="row">{{$no++}}</th>
-              <td>{{$row->nama}}</td>
-              <td>{{$row->jenisKelamin}}</td>
-              <td>{{$row->noTelepon}}</td>
+              <td>{{$row->NRP}}</td>
+              <td>{{$row->Nama}}</td>
+              <td>{{$row->Absen}}</td>
+              <td>{{$row->Keterangan}}</td>
               <td>{{$row->created_at->diffForHumans()}}</td>
               <td>
-                <a href="tampilDataMahasiswa/{{$row->id}}" class="btn btn-info">Update</a>
-                <a href="deleteMahasiswa/{{$row->id}}" class="btn btn-danger">Delete</a> 
+                <a href="/tampilDataPresensi/{{$row->id}}" class="btn btn-info">Update</a>
+                <a href="/deletePresensi/{{$row->id}}" class="btn btn-danger">Delete</a> 
               </td>
             </tr>
             @endforeach
           </tbody>
         </table>
-
-
-        <a href="/dashboard"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
-
+        
+        <a href="/"><img src="https://img.icons8.com/tiny-glyph/16/null/reply-arrow.png"/></a>
       </div><!-- /.container-fluid -->
     </div>
 

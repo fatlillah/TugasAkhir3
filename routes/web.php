@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\PresenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,21 +58,17 @@ Route::post('updateMatkul/{id}', [MatakuliahController::class, 'updateMatkul'])-
 
 Route::get('/deleteMatakuliah/{id}', [MatakuliahController::class, 'delete'])->name('delete');
 
-// presences (kehadiran)
-Route::prefix('/auth')->group(function(){
-Route::resource('/presences', PresenceController::class)->only(['index']);
-Route::get('/presences/qrcode', [PresenceController::class, 'showQrcode'])->name('presences.qrcode');
-Route::get('/presences/qrcode/download-pdf', [PresenceController::class, 'downloadQrCodePDF'])->name('presences.qrcode.download-pdf');
-Route::get('/presences/{attendance}', [PresenceController::class, 'show'])->name('presences.show');
-// not present data
-Route::get('/presences/{attendance}/not-present', [PresenceController::class, 'notPresent'])->name('presences.not-present');
-Route::post('/presences/{attendance}/not-present', [PresenceController::class, 'notPresent']);
-// present (url untuk menambahkan/mengubah user yang tidak hadir menjadi hadir)
-Route::post('/presences/{attendance}/present', [PresenceController::class, 'presentUser'])->name('presences.present');
-Route::post('/presences/{attendance}/acceptPermission', [PresenceController::class, 'acceptPermission'])->name('presences.acceptPermission');
-// employees permissions
-Route::get('/presences/{attendance}/permissions', [PresenceController::class, 'permissions'])->name('presences.permissions');
-});
+
+// for presensi
+Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
+Route::get('/insertPresensi', [PresensiController::class, 'insertPresensi'])->name('insertPresensi');
+Route::post('/addPresensi', [PresensiController::class, 'addPresensi'])->name('addPresensi');
+
+Route::get('/tampilDataPresensi/{id}', [PresensiController::class, 'tampilDataPresensi'])->name('tampildata');
+Route::post('/updatePresensi/{id}', [PresensiController::class, 'updatePresensi'])->name('updatePresensi');
+
+Route::get('/deletePresensi/{id}', [PresensiController::class, 'deletePresensi'])->name('deletePresensi');
+
 
 //Login&Register
 Route::redirect('/', '/auth/login');

@@ -7,10 +7,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Data Mahasiswa</title>
+  <title>Data Presensi</title>
 
   <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
   {{-- custom css --}}
@@ -37,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-    
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -152,41 +152,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-
-      
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
     </ul>
-      </ul>
-      <ul class= "navbar-nav">
-          @auth
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-person"></i> {{ auth()->user()->name }}
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/matakuliah"><i class="bi bi-grid-3x3-gap-fill"></i> My Absensi</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <a href="{{ route('logout') }}">
-                @csrf
-                <button type="submit"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</li></button>
-              </form>
-            </li>
-          </ul>
-        </li>
-          @else
-            <li class="nav-item">
-              <a href="{{ url('/auth/login')}}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-            </li>
-          @endauth
-      </ul>
-      
-       
-
   </nav>
   <!-- /.navbar -->
 
@@ -195,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('admin-lte/dist/img/admin.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">My WebApp</span>
+      <span class="brand-text font-weight-light">MY WebApp</span>
     </a>
 
     <!-- Sidebar -->
@@ -206,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('admin-lte/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">Kelompok 3</a>
         </div>
       </div>
 
@@ -227,43 +198,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                 <a href="/dashboard" class="nav-link">
-                   <i class="nav-icon fas fa-th"></i>
-                   <p>
-                     Dashboard
-                     <span class="right badge badge-danger">hot</span>
-                   </p>
-                 </a>
-               </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Data Mahasiswa
+                Starter Pages
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/mahasiswa" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Mahasiswa</p>
+                  <p>Active Page</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/matakuliah" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Matakuliah</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/presensi" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Presensi</p>
+                  <p>Inactive Page</p>
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Simple Link
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
           </li>
         </ul>
       </nav>
@@ -281,7 +246,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Insert Data Mahasiswa</h1>
+            <h1 class="m-0">Update Data Presensi</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -294,27 +259,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <div class="content">
       <div class="container">
-        <form action="/addMahasiswa" method="POST" enctype="multipart/form-data">
+        <form action="/updatePresensi/{{$data->id}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
-            <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="namaid" placeholder="masukkan nama" name="nama">
+            <label for="nama" class="form-label">NRP</label>
+            <input type="text" class="form-control" id="namaid" placeholder="Masukkan NRP" name="NRP" value="{{$data->NRP}}">
           </div>
           <div class="mb-3">
-            <label for="kelamin" class="form-label">Jenis Kelamin</label>
-            <select class="form-select" aria-label=".form-select-sm example" name="jenisKelamin">
-              <option selected>Masukkan Kelamin</option>
-              <option value="laki">Laki-laki</option>
-              <option value="perempuan">Perempuan</option>
+            <label for="nama" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="namaid" placeholder="Masukkan nama" name="Nama" value="{{$data->Nama}}">
+          </div>
+          <div class="mb-3">
+            <label for="nama" class="form-label">Absen</label>
+            <input type="text" class="form-control" id="namaid" placeholder="Masukkan absen" name="Absen" value="{{$data->Absen}}">
+          </div>
+          <div class="mb-3">
+            <label for="nama" class="form-label">Keterangan</label>
+            <select class="form-select" aria-label=".form-select-sm example" name="Keterangan" value="{{$data->Keterangan}}">
+              <option selected>Keterangan</option>
+              <option value="H">Hadir</option>
+              <option value="I">Izin</option>
+              <option value="S">Sakit</option>
             </select>
           </div>
-          <div class="mb-3">
-            <label for="hp" class="form-label">No Handphone</label>
-            <input type="number" class="form-control" id="hp" placeholder="masukkan no handphone" name="noTelepon">
-          </div>
-          <button type="submit" class="btn btn-success mb-3">Add</button>
-          <a href="/mahasiswa">
-            <button type="button" class="btn btn-danger mb-3 float-end">Back</button>
+          <button type="submit" class="btn btn-success mb-3">Update</button>
+          <a href="/presensi">
+            <button type="button" class="btn btn-danger mb-3 float-end">Cancel</button>
           </a>
         </form>
       </div>
